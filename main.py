@@ -31,12 +31,14 @@ async def start(bot, update):
 async def download_upload(bot, message):
      alert = await message.reply_text("Processing....")
      Speed = speedtest.Speedtest() 
-     await alert.delete()
+     await alert.edit("Getting Best server")
+     Speed.get_best_server()
+     await alert.edit(f"Connected to  {Speed.results.server["sponsor"]} ({Speed.results.server["name"]})')")
      message = await message.reply_text("Checking Download / Upload Speed ...")
      downloadspeed = int(round(Speed.download()))
      downloadspeed = downloadspeed/1000000 # bit to kbps
      uploadspeed = int(round(Speed.upload()))
      uploadspeed = uploadspeed/1000000 # bit to kbps
-     await message.edit_text(f" Download Speed : `{downloadspeed} kbps` \n Upload Speed : `{uploadspeed} kbps` \n \n © @BugHunterBots")
+     await message.edit_text(f" Download Speed : `{downloadspeed} kbps` \nUpload Speed : `{uploadspeed} kbps` \nServer : {Speed.results.server["sponsor"]} ({Speed.results.server["name"]})')") \n © @BugHunterBots")
 
 bughunter0.run()
