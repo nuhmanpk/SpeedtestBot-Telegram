@@ -8,6 +8,7 @@ from os import error
 import speedtest   
 import logging
 import pyrogram
+import math
 from decouple import config
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
@@ -27,9 +28,17 @@ async def start(bot, update):
  txt = await update.reply_text("ചത്തോന്ന് അറിയാൻ വന്നതാവും ല്ലേ !!")
 
 @bughunter0.on_message(filters.private)
-async def download(bot, message):
-     downloadSpeed = speedtest.Speedtest() 
-     txt = await message.reply_text(f"{downloadSpeed.download()} Mbps")
-     txt1 = await message.reply_text(f"{downloadSpeed.upload} Mbps")
+async def download_upload(bot, message):
+     alert = await message.reply_text("Processing....")
+     Speed = speedtest.Speedtest() 
+     await alert.delete()
+     dlspeed = await message.reply_text("Checking Download Speed ...")
+     downloadspeed = round(Speed.download())
+     downloadspeed = downloadspeed/1000000 # bit to megabit
+     await dlspeed.edit(f"`Download Speed : {downloadspeed} Mbps`")
+     upspeed = await message.reply_text("Checking Upload Speed")
+     uploadspeed = round(Speed.upload())
+     uploadspeed = uploadspeed/1000000 # bit to megabit
+     await upspeed.edit(f"`Upload Speed : {uploadspeed} Mbps`")
 
 bughunter0.run()
