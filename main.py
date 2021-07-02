@@ -33,11 +33,11 @@ async def download_upload(bot, message):
      Speed = speedtest.Speedtest() 
      await alert.delete()
      dlspeed = await message.reply_text("Checking Download Speed ...")
-     downloadspeed = math.round(Speed.download())
+     downloadspeed = int(round(Speed.download()))
      downloadspeed = downloadspeed/1000000 # bit to kbps
      await dlspeed.edit_text(f"`Download Speed : {downloadspeed} kbps`")
      upspeed = await message.reply_text("Checking Upload Speed")
-     uploadspeed = math.round(Speed.upload())
+     uploadspeed = int(round(Speed.upload()))
      uploadspeed = uploadspeed/1000000 # bit to kbps
      await upspeed.edit_text(f"`Upload Speed : {uploadspeed} kbps`")
 
