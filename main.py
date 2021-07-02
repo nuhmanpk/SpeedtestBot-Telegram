@@ -1,5 +1,5 @@
 # © BugHunterCodeLabs ™
-# © bughunter0
+# © bughunter0 / nuhman_pk
 # 2021
 # Copyright - https://en.m.wikipedia.org/wiki/Fair_use
 
@@ -33,12 +33,13 @@ async def download_upload(bot, message):
      speed = speedtest.Speedtest() 
      await alert.edit("Getting Best server")
      speed.get_best_server()
-     await alert.edit(f'Connected to : {speed.results.server["sponsor"]} ({speed.results.server["name"]})')
+     await alert.edit(f'**Connected to :** {speed.results.server["sponsor"]} ({speed.results.server["name"]})')
      message = await message.reply_text("Checking Download / Upload Speed ...")
-     downloadspeed = int(round(speed.download()))
+     downloadspeed = speed.download()
      downloadspeed = downloadspeed/1000000 # bit to kbps
-     uploadspeed = int(round(speed.upload()))
+     uploadspeed = speed.upload()
      uploadspeed = uploadspeed/1000000 # bit to kbps
-     await message.edit_text(f' Download Speed : `{downloadspeed} kbps` \nUpload Speed : `{uploadspeed} kbps` \nServer : {speed.results.server["sponsor"]} ({speed.results.server["name"]})\n © @BugHunterBots')
+     await alert.delete()
+     await message.edit_text(f' **Download Speed :** `{downloadspeed} kbps` \n**Upload Speed :** `{uploadspeed} kbps` \n**Server :** {speed.results.server["sponsor"]} ({speed.results.server["name"]})\n \n © @BugHunterBots')
 
 bughunter0.run()
