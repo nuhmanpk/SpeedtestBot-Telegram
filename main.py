@@ -33,7 +33,7 @@ async def download_upload(bot, message):
      Speed = speedtest.Speedtest() 
      await alert.edit("Getting Best server")
      Speed.get_best_server()
-     await alert.edit(f"Connected to  {Speed.results.server["sponsor"]} ({Speed.results.server["name"]})')")
+     await alert.edit(f"Connected to : {Speed.results.server["sponsor"]} ({Speed.results.server["name"]})")
      message = await message.reply_text("Checking Download / Upload Speed ...")
      downloadspeed = int(round(Speed.download()))
      downloadspeed = downloadspeed/1000000 # bit to kbps
