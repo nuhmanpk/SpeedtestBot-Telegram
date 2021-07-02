@@ -37,6 +37,6 @@ async def download_upload(bot, message):
      downloadspeed = downloadspeed/1000000 # bit to kbps
      uploadspeed = int(round(Speed.upload()))
      uploadspeed = uploadspeed/1000000 # bit to kbps
-     await message.edit_text(f" Download Speed : `{downloadspeed} kbps` /n Upload Speed : `{uploadspeed} kbps` \n \n © @BugHunterBots")
+     await message.edit_text(f" Download Speed : `{downloadspeed} kbps` \n Upload Speed : `{uploadspeed} kbps` \n \n © @BugHunterBots")
 
 bughunter0.run()
